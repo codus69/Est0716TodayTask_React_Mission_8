@@ -10,12 +10,12 @@ function App() {
   const [category, setCategory] = useState('all');
   const [favoriteIds, setFavoriteIds] = useState([]);
   const [favoriteOnly, setFavoriteOnly] = useState(false);
+  const [level, setLevel] = useState('all');
 
   const renderCount = useRef(0);
-
   renderCount.current += 1;
-
   const searchInputRef = useRef(null);
+  const prevKeywordRef = useRef('');
 
   useEffect(() => {
     if (searchInputRef.current) {
@@ -29,17 +29,37 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    setKeyword('');
+    setCategory('all');
+    setFavoriteOnly(false);
+    setLevel('all');
+
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      prevKeywordRef.current = keyword;
+    };
+  }, [keyword]);
+
   const filteredData = useMemo(() => {
     console.log('데이터 필터링 계산 중...');
 
-    return initialData.filter((item) => {
+    const result = initialData.filter((item) => {
       const matchesCategory = category === 'all' || item.category === category;
       const matchesKeyword = item.title.toLowerCase().includes(keyword.toLowerCase());
       const matchesFavorite = !favoriteOnly || favoriteIds.includes(item.id);
+      const matchesLevel = level === 'all' || item.level === level;
 
-      return matchesCategory && matchesKeyword && matchesFavorite;
+      return matchesCategory && matchesKeyword && matchesFavorite && matchesLevel;
     });
-  }, [keyword, category, favoriteOnly, favoriteIds]);
+
+    return result;
+  }, [keyword, category, favoriteOnly, favoriteIds, level]);
 
   const summary = useMemo(() => {
     console.log('통계 정보 계산 중...');
@@ -61,13 +81,28 @@ function App() {
       <h1>React Hooks 학습 목록 관리</h1>
       <p>useState, useMemo, useCallback, useRef를 활용한 복습 미션입니다.</p>
 
+      <h2>검색</h2>
       <SearchForm keyword={keyword} setKeyword={setKeyword} searchInputRef={searchInputRef} />
 
-      <div style={{ margin: '10px 0' }}>
-        <button onClick={handleFocusSearch}>검색창으로 이동</button>
+      <div>
+        <p>현재 검색어: {keyword}</p>
+        <p>이전 검색어: {prevKeywordRef.current}</p>
       </div>
 
+      <div>
+        <button onClick={handleFocusSearch}>검색창으로 이동</button>
+        <button onClick={handleReset}>초기화</button>
+      </div>
+
+      <h2>카테고리 필터</h2>
       <CategoryFilter category={category} setCategory={setCategory} />
+
+      <div>
+        <span>난이도: </span>
+        <button onClick={() => setLevel('all')}>전체 난이도</button>
+        <button onClick={() => setLevel('basic')}>basic</button>
+        <button onClick={() => setLevel('intermediate')}>intermediate</button>
+      </div>
 
       <button onClick={() => setFavoriteOnly(!favoriteOnly)}>
         {favoriteOnly ? '전체 항목 보기' : '즐겨찾기만 보기'}
@@ -80,7 +115,12 @@ function App() {
         <p>App 렌더링 횟수: {renderCount.current}회</p>
       </div>
 
-      <StudyList filteredData={filteredData} favoriteIds={favoriteIds} onToggleFavorite={handleToggleFavorite} />
+      <h2>학습 목록</h2>
+      {filteredData.length === 0 ? (
+        <p>조건에 맞는 학습 항목이 없습니다.</p>
+      ) : (
+        <StudyList filteredData={filteredData} favoriteIds={favoriteIds} onToggleFavorite={handleToggleFavorite} />
+      )}
     </div>
   );
 }
