@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "React",
+    "desc": "사용자 인터페이스를 만들기 위한 JavaScript 라이브러리입니다.",
+    "category": "library",
+    "level": "basic"
+  },
+  {
+    "id": 2,
+    "title": "Component",
+    "desc": "화면을 구성하는 독립적인 UI 조각입니다.",
+    "category": "concept",
+    "level": "basic"
+  },
+  {
+    "id": 3,
+    "title": "Props",
+    "desc": "부모 컴포넌트가 자식 컴포넌트에게 전달하는 데이터입니다.",
+    "category": "concept",
+    "level": "basic"
+  },
+  {
+    "id": 4,
+    "title": "useState",
+    "desc": "컴포넌트에서 상태값을 관리하기 위한 React Hook입니다.",
+    "category": "hook",
+    "level": "basic"
+  },
+  {
+    "id": 5,
+    "title": "useMemo",
+    "desc": "계산된 결과를 기억하여 불필요한 재계산을 줄이는 React Hook입니다.",
+    "category": "hook",
+    "level": "intermediate"
+  },
+  {
+    "id": 6,
+    "title": "useCallback",
+    "desc": "함수를 기억하여 불필요한 함수 재생성을 줄이는 React Hook입니다.",
+    "category": "hook",
+    "level": "intermediate"
+  },
+  {
+    "id": 7,
+    "title": "useRef",
+    "desc": "DOM 요소 또는 변경 가능한 값을 참조하는 React Hook입니다.",
+    "category": "hook",
+    "level": "intermediate"
+  },
+  {
+    "id": 8,
+    "title": "Event",
+    "desc": "사용자의 클릭과 입력 등의 동작을 처리하는 기능입니다.",
+    "category": "concept",
+    "level": "basic"
+  }
+]
