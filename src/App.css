@@ -1,0 +1,201 @@
+body {
+  margin: 20px;
+  background-color: #f1f3f5;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #dfdfdf;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.app-container > p:first-of-type {
+  color: #4957d8;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.app-container > h1 {
+  font-size: 30px;
+  color: #000;
+  margin: 1px;
+  text-align: center;
+}
+
+.app-container > p:nth-of-type(2) {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.app-container > h2 {
+  font-size: 18px;
+  color: #000;
+  margin: 30px 0 10px 0;
+}
+
+.app-container button {
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 2px;
+  display: border-box;
+  line-height: 1.2;
+}
+.app-container button.active {
+  background-color: #4957d8;
+  border-color: #4957d8;
+  color: #ffffff;
+}
+.app-container button:hover {
+  background-color: #f0f2ff;
+}
+
+.search-history {
+  margin: 8px 0;
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-history p {
+  margin: 0;
+}
+
+.search-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-buttons button {
+  width: 100%;
+}
+
+.level-filter {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.level-filter span {
+  padding-right: 5px;
+  font-size: 14px;
+  color: #000;
+}
+
+.level-filter button {
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.level-filter + button {
+  align-self: flex-start;
+  padding: 10px 16px;
+  margin-bottom: 25px;
+}
+
+.dashboard-summary {
+  background-color: #f0f2ff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 10px 0 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+}
+
+.dashboard-summary p {
+  margin: 0;
+}
+
+.no-result {
+  text-align: center;
+  color: #868e96;
+  padding: 30px 0;
+  font-size: 14px;
+  margin: 0;
+  border: 1px dashed #dfdfdf;
+  border-radius: 8px;
+}
+.search-section input,
+.app-container input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.list-section div,
+.study-card,
+.study-item {
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.list-section h3,
+.study-card h3 {
+  font-size: 20px;
+  color: #000;
+  margin: 0 0 8px 0;
+}
+
+.list-section p,
+.study-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.list-section .meta-info,
+.study-card .meta,
+.list-section span {
+  font-size: 13px;
+  color: #777;
+}
+
+.list-section button,
+.study-card button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px !important;
+  background-color: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.list-section button:hover,
+.study-card button:hover {
+  background-color: #f0f2ff;
+}
+.list-section button.active,
+.study-card button.active {
+  background-color: #f0f2ff;
+  color: #000;
+}

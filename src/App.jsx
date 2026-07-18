@@ -84,12 +84,12 @@ function App() {
       <h2>검색</h2>
       <SearchForm keyword={keyword} setKeyword={setKeyword} searchInputRef={searchInputRef} />
 
-      <div>
+      <div className="search-history">
         <p>현재 검색어: {keyword}</p>
         <p>이전 검색어: {prevKeywordRef.current}</p>
       </div>
 
-      <div>
+      <div className="search-buttons">
         <button onClick={handleFocusSearch}>검색창으로 이동</button>
         <button onClick={handleReset}>초기화</button>
       </div>
@@ -97,18 +97,24 @@ function App() {
       <h2>카테고리 필터</h2>
       <CategoryFilter category={category} setCategory={setCategory} />
 
-      <div>
+      <div className="level-filter">
         <span>난이도: </span>
-        <button onClick={() => setLevel('all')}>전체 난이도</button>
-        <button onClick={() => setLevel('basic')}>basic</button>
-        <button onClick={() => setLevel('intermediate')}>intermediate</button>
+        <button onClick={() => setLevel('all')} className={level === 'all' ? 'active' : ''}>
+          전체 난이도
+        </button>
+        <button onClick={() => setLevel('basic')} className={level === 'basic' ? 'active' : ''}>
+          basic
+        </button>
+        <button onClick={() => setLevel('intermediate')} className={level === 'intermediate' ? 'active' : ''}>
+          intermediate
+        </button>
       </div>
 
       <button onClick={() => setFavoriteOnly(!favoriteOnly)}>
         {favoriteOnly ? '전체 항목 보기' : '즐겨찾기만 보기'}
       </button>
 
-      <div>
+      <div className="dashboard-summary">
         <p>전체 항목: {summary.total}개</p>
         <p>현재 표시: {summary.visible}개</p>
         <p>즐겨찾기: {summary.favorite}개</p>
@@ -117,7 +123,7 @@ function App() {
 
       <h2>학습 목록</h2>
       {filteredData.length === 0 ? (
-        <p>조건에 맞는 학습 항목이 없습니다.</p>
+        <p className="no-result">조건에 맞는 학습 항목이 없습니다.</p>
       ) : (
         <StudyList filteredData={filteredData} favoriteIds={favoriteIds} onToggleFavorite={handleToggleFavorite} />
       )}
